@@ -72,13 +72,11 @@ Explain the process of data collection and the steps taken to clean and transfor
 
 #### Model Training and Evaluation
 Describe the approach taken to train and evaluate the machine learning model. We would consider these models:
-**1\. Descriptive Statistics**
+##### Descriptive Statistics**
 
-•**Purpose:** Provides a summary of the data.
-
-•**Key Metrics:** Mean, median, mode, standard deviation, variance, frequency distribution.
-
-•**Use Case:** Understand the central tendencies and variability in earthquake magnitudes and occurrences.
+###### Purpose:** Provides a summary of the data.
+- Key Metrics Mean, median, mode, standard deviation, variance, frequency distribution.
+- Use Case:** Understand the central tendencies and variability in earthquake magnitudes and occurrences.
 
 **2\. Time Series Analysis**
 
@@ -92,11 +90,11 @@ Describe the approach taken to train and evaluate the machine learning model. We
 
 •**ARIMA (AutoRegressive Integrated Moving Average):** Forecast future earthquake occurrences.
 
-•**Use Case:** Identify trends, seasonal effects, and forecast future events.
+•**Use Case:** Identify trends, and seasonal effects, and forecast future events.
 
 **3\. Geospatial Analysis**
 
-•**Purpose:** Analyzes spatial patterns and distributions.
+**Purpose:** Analyzes spatial patterns and distributions.
 
 •**Key Techniques:**
 
