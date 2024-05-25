@@ -72,90 +72,23 @@ Explain the process of data collection and the steps taken to clean and transfor
 
 #### Model Training and Evaluation
 Describe the approach taken to train and evaluate the machine learning model. 
-#### Possible Models to consider:
-##### Descriptive Statistics**
-###### Purpose: Provides a summary of the data.
-- Key Metrics Mean, median, mode, standard deviation, variance, frequency distribution.
-- Use Case:** Understand the central tendencies and variability in earthquake magnitudes and occurrences.
 
-**2\. Time Series Analysis**
-
-•**Purpose:** Analyzes data points collected or recorded at specific time intervals.
-
-•**Key Models:**
-
-**Trend Analysis:** Identify long-term trends.
-
-•**Seasonal Decomposition (STL):** Detect seasonal patterns.
-
-•**ARIMA (AutoRegressive Integrated Moving Average):** Forecast future earthquake occurrences.
-
-•**Use Case:** Identify trends, and seasonal effects, and forecast future events.
-
-**3\. Geospatial Analysis**
-
-**Purpose:** Analyzes spatial patterns and distributions.
-
-•**Key Techniques:**
-
-•**GIS Mapping:** Visualize earthquake locations and intensities.
-
-•**Heat Maps:** Show density of earthquake occurrences.
-
-•**Cluster Analysis:** Identify spatial clusters of earthquake activity.
-
-•**Use Case:** Understand geographic distribution and identify hotspots of earthquake activity.
-
-**4\. Predictive Modeling**
-
-•**Purpose:** Predict future earthquake magnitudes and occurrences based on historical data.
-
-•**Key Models:**
-
-•**Random Forest:** For complex interactions and feature importance.
-
-•**Linear Regression:** For simple trend analysis and prediction.
-
-•**Use Case:** Predict earthquake magnitudes and classify intensities based on historical patterns.
-
-**5\. Seismic Hazard Analysis**
-
-•**Purpose:** Assess the probability and impact of future earthquakes.
-
-•**Key Models:**
-
-•**Probabilistic Seismic Hazard Analysis (PSHA):** Estimate the likelihood of various levels of earthquake shaking.
-
-•**Deterministic Seismic Hazard Analysis (DSHA):** Evaluate specific earthquake scenarios.
-
-•**Use Case:** Assess risk and prepare for potential earthquake impacts.
-
-**Integrated Analysis Plan:**
-
-1.**Start with Descriptive Statistics** to get an overview of the data.
-
-2.**Conduct Time Series Analysis** to identify trends and forecast future events.
-
-3.**Perform Geospatial Analysis** to understand spatial patterns and identify hotspots.
-
-4.**Use Predictive Modeling** (Random Forest and Linear Regression) to predict future magnitudes and understand feature importance.
-
-5.**Apply Seismic Hazard Analysis** to assess the probability and impact of future earthquakes.
-
-## Model Optimization
+#### Model Optimization
 Document the iterative process of model optimization and the resulting performance improvements.
 
-## Results and Conclusions
+#### Results and Conclusions
 Present the results of the model and any conclusions drawn from the analysis.
 
-## Future Work
+#### Future Work
 Discuss any additional questions that surfaced and outline plans for future development.
 
-## Installation
+#### Installation
 Provide instructions for setting up the project locally.
 
-## Usage
+#### Usage
 Explain how to run the code and what to expect from the outputs.
 
-## Authors
-List the contributors to the project
+#### Authors
+Pedro Zurita
+Christoph Guenther
+Ashwini Kumar
