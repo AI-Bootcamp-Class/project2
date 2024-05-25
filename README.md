@@ -71,10 +71,10 @@ Provide a brief overview of the project, including the main goals and objectives
 Explain the process of data collection and the steps taken to clean and transform the data.
 
 #### Model Training and Evaluation
-Describe the approach taken to train and evaluate the machine learning model. We would consider these models:
+Describe the approach taken to train and evaluate the machine learning model. 
+#### Possible Models to consider:
 ##### Descriptive Statistics**
-
-###### Purpose:** Provides a summary of the data.
+###### Purpose: Provides a summary of the data.
 - Key Metrics Mean, median, mode, standard deviation, variance, frequency distribution.
 - Use Case:** Understand the central tendencies and variability in earthquake magnitudes and occurrences.
 
