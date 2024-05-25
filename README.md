@@ -86,7 +86,7 @@ Describe the approach taken to train and evaluate the machine learning model. We
 
 •**Key Models:**
 
-•**Trend Analysis:** Identify long-term trends.
+**Trend Analysis:** Identify long-term trends.
 
 •**Seasonal Decomposition (STL):** Detect seasonal patterns.
 
