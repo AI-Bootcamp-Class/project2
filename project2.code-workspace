@@ -8,6 +8,15 @@
 		},
 		{
 			"path": "../../CG_14-ML-Optimization"
+		},
+		{
+			"path": "../../CG_11-Unsupervised-Learning"
+		},
+		{
+			"path": "../../CG_13-Classification"
+		},
+		{
+			"path": "../../CG_12-Regression"
 		}
 	]
 }
