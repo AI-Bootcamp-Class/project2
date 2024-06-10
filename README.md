@@ -1,3 +1,52 @@
+# Earthquake Impact Prediction Project
+
+## Overview
+
+This project aims to predict the impact of earthquakes using historical seismic data and soil bulk density information. By analyzing various factors such as magnitude, depth, location, and geological features, we employ machine learning models to forecast potential earthquake impacts and visualize earthquake occurrences. The project integrates data retrieval, preprocessing, and model evaluation to deliver robust predictive capabilities and insights into seismic hazards.
+
+## Features
+
+- **Data Retrieval**: Fetches earthquake data from USGS and soil density data from local files.
+- **Data Preprocessing**: Cleans and prepares data for analysis, including handling missing values and feature engineering.
+- **Exploratory Data Analysis (EDA)**: Comprehensive exploration of the dataset to understand distributions, relationships, and patterns.
+- **Predictive Modeling**: Implements and evaluates various machine learning models to predict earthquake impacts.
+
+
+## Key Models
+
+- **Random Forest**: Captures complex interactions in the data and assesses feature importance, providing robust predictions by aggregating multiple decision trees.
+- **Logistic Regression**: Performs trend analysis and binary classification to predict earthquake intensities.
+- **Support Vector Machine (SVM)**: Handles complex classification tasks and ensures robust separation in high-dimensional spaces.
+- **K Nearest Neighbors (KNN)**: Classifies earthquake impacts based on the proximity of similar data points.
+
+## Future Considerations
+
+- **Geospatial Analysis**: We plan to enhance our visualization capabilities by creating detailed maps that show earthquake occurrences and densities.
+- **Seismic Hazard Analysis**: We aim to integrate both Probabilistic Seismic Hazard Analysis (PSHA) and Deterministic Seismic Hazard Analysis (DSHA) to evaluate potential earthquake impacts comprehensively.
+
+## Project Structure 
+ * earthquake_data_standardized.csv - Standardized dataset used for analysis
+ * earthquake_data_reduced.csv - reduced dataset 
+ * earthquake_data.csv - raw earthquake dataset
+ * wosis_latest_bdwsod.csv - # Soil bulk density data file
+
+### Files
+*  retrieve_data.ipynb - # Retrieves earthquake and soil data
+*  preprocess_data.ipynb - # Preprocesses the data
+*  evaluate_classifiers.ipynb - # Evaluates and tunes classifiers
+*  earthquake_model.ipynb -# Builds the model to predict earthquake intensity
+* lr_model_predictions.ipynb - # Logistic regression model predictions
+* svn_model_predictions.ipynb - # SVM model predictions
+* rfc_model_optimizations.ipynb -# Random forest model predictions
+### Scripts/
+* optimization_utilities.py - # Utility functions for evaluating classifiers
+*  pipeline_utilities.py - # Functions for preprocessing, splitting data, and building models
+### Reference Files
+* README.md - # Project overview and setup instructions
+* EDA.md 
+
+## Project Structure
+
 # Project Requirements 
 
 #### Data Model Implementation (25 points)
@@ -73,7 +122,7 @@ Pedro Zurita
 Christoph Guenther
 Ashwini Kumar
 
-*************************************************************************
+************************************************************************
 # PROJECT PLAN
 
 #### Setup Phase (Week 1: May 21 - May 27)
