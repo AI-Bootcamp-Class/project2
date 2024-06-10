@@ -45,6 +45,32 @@ This project aims to predict the impact of earthquakes using historical seismic 
 * README.md - # Project overview and setup instructions
 * EDA.md 
 
+#### Data Collection and Cleaning
+##### Data Pre-Processing
+    1. Retrieve and read Earthquake data
+    2. Check data types and filter our NaN values
+    3. Target feature choosen is MMI
+    4. Standard Scaler applied to data 
+    5. Save Starndardized data to csv "earthquake_data_standardized.csv"
+##### Retrieve Earthquake and Soil Data:
+    1. Retrieve Earthquake data and define the specific columns and features needed
+    2. Retrieve Soil Density Data and filter to just US data
+    3. Find nearest lat and long soil density data points that correlate with the Earthquake data. 
+    4. Merge Earthquake and Soil Density data and save it under file "earthquake_data.csv"
+##### Model Training and Evaluation
+    1. Run data set through KNN, RFC, SVN and Linear Regression Models
+    2. Analysis Accuracy for Test and Train data sets
+    3. Determine which models have optimal predictions 
+#### Model Optimization
+    1. Using Hyperparameters optimize the models
+    2. Using P-Values to opimize models
+    3. Use PCA values to opimize the models
+
+#### Results and Conclusions
+Present the results of the model and any conclusions drawn from the analysis.
+
+#### Future Work
+Discuss any additional questions that surfaced and outline plans for future development.
 
 #### Authors
 Pedro Zurita
