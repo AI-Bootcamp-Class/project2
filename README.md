@@ -4,7 +4,7 @@
 
 This project aims to predict the impact of earthquakes using historical seismic data and soil bulk density information. By analyzing various factors such as magnitude, depth, location, and geological features, we employ machine learning models to forecast potential earthquake impacts and visualize earthquake occurrences. The project integrates data retrieval, preprocessing, and model evaluation to deliver robust predictive capabilities and insights into seismic hazards.
 
-## Features
+## Metholology 
 
 - **Data Retrieval**: Fetches earthquake data from USGS and soil density data from local files.
 - **Data Preprocessing**: Cleans and prepares data for analysis, including handling missing values and feature engineering.
@@ -25,6 +25,7 @@ This project aims to predict the impact of earthquakes using historical seismic 
 - **Seismic Hazard Analysis**: We aim to integrate both Probabilistic Seismic Hazard Analysis (PSHA) and Deterministic Seismic Hazard Analysis (DSHA) to evaluate potential earthquake impacts comprehensively.
 
 ## Project Structure 
+### Resources
  * earthquake_data_standardized.csv - Standardized dataset used for analysis
  * earthquake_data_reduced.csv - reduced dataset 
  * earthquake_data.csv - raw earthquake dataset
@@ -38,16 +39,53 @@ This project aims to predict the impact of earthquakes using historical seismic 
 * lr_model_predictions.ipynb - # Logistic regression model predictions
 * svn_model_predictions.ipynb - # SVM model predictions
 * rfc_model_optimizations.ipynb -# Random forest model predictions
-### Scripts/
+### Scripts
 * optimization_utilities.py - # Utility functions for evaluating classifiers
 *  pipeline_utilities.py - # Functions for preprocessing, splitting data, and building models
 ### Reference Files
 * README.md - # Project overview and setup instructions
 * EDA.md 
 
-## Project Structure
+#### Data Collection and Cleaning
+##### Data Pre-Processing
+    1. Retrieve and read Earthquake data
+    2. Check data types and filter our NaN values
+    3. Target feature choosen is MMI
+    4. Standard Scaler applied to data 
+    5. Save Starndardized data to csv "earthquake_data_standardized.csv"
+##### Retrieve Earthquake and Soil Data:
+    1. Retrieve Earthquake data and define the specific columns and features needed
+    2. Retrieve Soil Density Data and filter to just US data
+    3. Find nearest lat and long soil density data points that correlate with the Earthquake data. 
+    4. Merge Earthquake and Soil Density data and save it under file "earthquake_data.csv"
+##### Model Training and Evaluation
+    1. Run data set through KNN, RFC, SVN and Linear Regression Models
+    2. Analysis Accuracy for Test and Train data sets
+    3. Determine which models have optimal predictions 
+#### Model Optimization
+    1. Using Hyperparameters optimize the models
+    2. Using P-Values to opimize models
+    3. Use PCA values to opimize the models
 
-# Project Requirements 
+#### Results and Conclusions
+Present the results of the model and any conclusions drawn from the analysis.
+
+#### Future Work
+Discuss any additional questions that surfaced and outline plans for future development.
+
+#### Installation
+Provide instructions for setting up the project locally.
+
+#### Usage
+Explain how to run the code and what to expect from the outputs.
+
+#### Authors
+Pedro Zurita
+Christoph Guenther
+Ashwini Kumar
+
+*******************************************************************************************
+# Class Project Requirements 
 
 #### Data Model Implementation (25 points)
 
@@ -89,38 +127,6 @@ Your presentation should cover the following:
 *   Slides effectively demonstrate the project. (2 points)
     
 *   Slides are visually clean and professional. (2 points)
-
- # Project Title
- ## Earthquake Maginitude Predictions 
-
-#### Executive Summary
-Provide a brief overview of the project, including the main goals and objectives.
-
-#### Data Collection and Cleaning
-Explain the process of data collection and the steps taken to clean and transform the data.
-
-#### Model Training and Evaluation
-Describe the approach taken to train and evaluate the machine learning model. 
-
-#### Model Optimization
-Document the iterative process of model optimization and the resulting performance improvements.
-
-#### Results and Conclusions
-Present the results of the model and any conclusions drawn from the analysis.
-
-#### Future Work
-Discuss any additional questions that surfaced and outline plans for future development.
-
-#### Installation
-Provide instructions for setting up the project locally.
-
-#### Usage
-Explain how to run the code and what to expect from the outputs.
-
-#### Authors
-Pedro Zurita
-Christoph Guenther
-Ashwini Kumar
 
 ************************************************************************
 # PROJECT PLAN
