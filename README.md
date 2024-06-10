@@ -73,12 +73,6 @@ Present the results of the model and any conclusions drawn from the analysis.
 #### Future Work
 Discuss any additional questions that surfaced and outline plans for future development.
 
-#### Installation
-Provide instructions for setting up the project locally.
-
-#### Usage
-Explain how to run the code and what to expect from the outputs.
-
 #### Authors
 Pedro Zurita
 Christoph Guenther
