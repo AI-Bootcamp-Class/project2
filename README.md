@@ -34,11 +34,11 @@ We use the Modified Mercalli Intensity (mmi) scale[^2] to determine the impact a
 ### Data Files 
 All data files are contained in the `Resources` folder. We used the following data files:
  * `wosis_latest_bdwsod.csv` - Soil bulk density data file.
- * `earthquake_data.csv` - Raw dataset. File combines earthquake data retrieved from USGS and soil bulk density data.
+ * `earthquake_data.csv` - Raw dataset. File combines earthquake data retrieved from USGS and soil bulk density data retrieved from ISRIC.
  * `earthquake_data_standardized.csv` - Standardized/Scaled and reduced dataset used for analysis. Contains only features we will use to build our models. Based on `earthquake_data.csv`. 
 
 ### Main Program Files
-This section lists the main program files used. They are contained in folder `ProgramFiles`.Details are provided in another section below. The main program files are:
+This section lists the main program files used. They are contained in folder `ProgramFiles`. Details are provided in another section below. The main program files are:
 * `retrieve_data.ipynb` - Retrieves earthquake and soil data and creates `earthquake_data.csv`.
 * `preprocess_data.ipynb` - Takes `earthquake_data.csv`, preprocesses the data and creates `earthquake_data_standardized.csv` as output.
 * `evaluate_classifiers.ipynb` - Takes `earthquake_data_standardized.csv` as input and evaluates five different classifiers to determine which one is best suited to build our model.
@@ -190,35 +190,22 @@ We started to build a pipeline to further explore this improvement but did not h
 * Evaluating earthquake specific models such as PSHA (Probabilistic Seismic Hazard Assessment) and DSHA (Deterministic Seismic Hazard Analysis).
 
 ## Authors
-Christoph Guenther
+
+Christoph Guenther  
 Ashwini Kumar
 
+************************************************************************
+
+## Licenses
+* USGS data is in the U.S. public domain[^3].
+* ISRIC data in the the U.S. public domain[^4].
+
 ## Footnotes
+
 [^1]: Nolan, Joe (May 6, 2022). *The Effects of Soil Type on Earthquake Damage*, WSRB website, https://www1.wsrb.com/blog/the-effects-of-soil-type-on-earthquake-damage, accessed on 6/10/2024.
+
 [^2]: Earthquake Hazards Program. *The Modified Mercalli Intensity Scale*, USGS website, https://www.usgs.gov/programs/earthquake-hazards/modified-mercalli-intensity-scale, accessed on 6/10/2024.
 
+[^3]: Information Policies and Instructions. *Copyrights and Credits*, USGS website, https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits as accessed on 6/10/2024.
 
-
-************************************************************************
-# PROJECT PLAN
-
-#### Setup Phase (Week 1: May 21 - May 27)
-- **Day 1-2**: Establish project scope and objectives; setup GitHub repository and project documentation.
-- **Day 3-5**: Research and select data sources, begin data extraction and initial cleaning.
-- **Day 6-7**: Start initial model development and basic training.
-
-#### Development and Optimization Phase (Week 2: May 28 - June 3)
-- **Day 1-3**: Complete data cleaning and preprocessing; finalize initial model training.
-- **Day 4-5**: Begin model optimization; implement different configurations and record changes.
-- **Day 6-7**: Start drafting README and begin creating presentation slides.
-
-##### Finalization and Review Phase (Week 3: June 4 - June 10)
-- **Day 1-2**: Complete model optimization and ensure performance meets criteria.
-- **Day 3-4**: Finalize all documentation (GitHub README, code comments).
-- **Day 5-6**: Finalize presentation slides and rehearse delivery.
-- **Day 7**: Conduct a full project review with all team members.
-
-#### Closing and Presentation (June 11)
-- Deliver the final presentation.
-- Push final changes to GitHub.
-- Gather feedback and discuss potential future developments.
+[^4]: USAGOV. *Learn about copyright and federal government materials*, USAGOV website, http://www.usa.gov/publicdomain/label/1.0/ as accessed on 6/11/2024.
