@@ -198,7 +198,7 @@ Ashwini Kumar
 
 ## Licenses
 * USGS data is in the U.S. public domain[^3].
-* ISRIC data in the the U.S. public domain[^4].
+* ISRIC data is in the U.S. public domain[^4].
 
 ## Footnotes
 
