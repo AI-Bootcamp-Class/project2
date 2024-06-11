@@ -1,4 +1,11 @@
-# Earthquake Impact Prediction Project
+# Predicting Earthquake Impact
+
+## Summary
+
+Using a combination of United States Geological Survey (USGS) earthquake data and International Soil Reference and Information Centre (ISRIC) soil bulk density data, we develop a model to predict the impact (intensity) of earthquakes as measured by the Modified Mercalli Intensity (MMI) scale.  
+To define our target feature, we divide our data points into three categories defined by the `mmi` value of each data point.  
+After evaluating Random Forest Classifier, Decision Tree Classifier, K-Nearest-Neighbor Classifier, Multinomial Logistic Regression Classifier, and Support Vector Machine Classifier, we determine that the Random Forest Classifier with hyperparameter `max_depth=6` performs the best on our data.  
+Using that classifier we build a model that returns an average balanced accuracy score of 0.62 for the test data set.
 
 ## Overview
 
@@ -8,7 +15,7 @@ This project integrates data retrieval, preprocessing, and model evaluation to d
 
 ## Process
 
-1. **Data Retrieval**: Fetch earthquake data from a United States Geological Survey (USGS) rest API at https://earthquake.usgs.gov/fdsnws/event/1 and soil density data from a `.csv` file (`wosis_latest_bdwsod.csv`) downloaded from https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/2f99e111-183c-11e9-aba8-a0481ca9e724.
+1. **Data Retrieval**: Fetch earthquake data from a United States Geological Survey (USGS) rest API at https://earthquake.usgs.gov/fdsnws/event/1 and soil density data from a `.csv` file (`wosis_latest_bdwsod.csv`) downloaded from ISRIC at https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/2f99e111-183c-11e9-aba8-a0481ca9e724.
 2. **Data Preprocessing**: Clean and prepare data for analysis, including handling missing values and feature engineering.  
 We use the Modified Mercalli Intensity (mmi) scale[^2] to determine the impact an earthquake might have.
 3. **Exploratory Data Analysis (EDA)**: Exploration of the dataset to understand distributions, relationships, and patterns.
@@ -60,7 +67,7 @@ We also created a preliminary data file. It is contained in the `Resources/Explo
 * README.md - Project overview and detailed account of the data retrieval, preprocessing, exploratory data analysis, classifier evaluations, and model building steps. Also lists all files created.
 * EDA.md 
 
-## Details of Data Collection and Preprocessing
+## Details of Data Collection, EDA, and Preprocessing
 ### Retrieve Earthquake and Soil Data:
 1. Retrieve Earthquake data using these filters 
    * Start date: 1/1/1995, end date: 12/31/2023.
@@ -108,7 +115,7 @@ We used the following classifiers utilizing the full feature set to build models
 
 For each model we split the data into train and test data sets and calculated average balanced accuracy scores for the train and test data sets as described above.  
 Based on the balanced test accuracy score, we picked the three best performing models for further optimization and tuning. Those models were
-* Random Forest - It had the best balanced test accuracy score (of 0.630) but with a balanced train accuracy score of 1.0 was overfitting the train data.
+* Random Forest - It had the best balanced test accuracy score (of 0.630) but with a balanced train accuracy score of 1.0 it was overfitting the train data.
 * Multinomial Logistic Regression - It had the second best balanced test accuracy score (of 0.594) and the smallest difference between balanced train and test accuracy scores (of 0.628 to 0.594) indicating the least overfitting of the train data.
 * Support Vector Machine - It had the third best balanced test accuracy score (of 0.589) with a still relatively small difference between balanced train and test accuracy scores (of 0.737 to 0.589).
 Not only are the balanced test accuracy scores of these models the best, but they are also within each of the models variation in metrics when picking different values for the `random_state` variable.  
@@ -167,22 +174,30 @@ We encountered the following challenges:
 * Location of `mmi` measurements were not available. We therefore used the soil data for a location that was closest to the earthquake location which might or might not be the same location at which the `mmi` was taken.
 * Persistent overfitting of the Random Forest Classifier. Unfortunately, it was the classifier with the best balanced accuracy score.
 * We found a dependency of the classifier performance on the `random_state` seed variable. We mitigated this challenge by evaluating the classifiers for different `random_state` values and averaging over the results.
+* One of our team members dropped out of the class.
 
 ## Conclusions
-Present the results of the model and any conclusions drawn from the analysis.
+We determined that a model built using the Random Forest Classifer with hyperparameter `max-depth=6` performed the best on average using the balanced accuracy score of the test data as a metric.  
+Unfortunately, we were unable to reach the target accuracy score of 0.75 with our model. Our model acchieved an average accuracy score of 0.62.  
+However, we were able to address the overfitting of the Random Forest Classifier by tuning the `max_depth` hyperparameter.
 
 ## Future Work
-Discuss any additional questions that surfaced and outline plans for future development.
-### Future Considerations
-
-- **Geospatial Analysis**: We plan to enhance our visualization capabilities by creating detailed maps that show earthquake occurrences and densities.
-- **Seismic Hazard Analysis**: We aim to integrate both Probabilistic Seismic Hazard Analysis (PSHA) and Deterministic Seismic Hazard Analysis (DSHA) to evaluate potential earthquake impacts comprehensively.
-
+Future work would need to center on improving the accuracy of the model by
+* Improving domain knowledge of the geological properties of earthquakes. This would inform the selection of relevant geological features.
+* Correlate the soil bulk density data location more closely with the location of the `mmi` measurement.
+* Further fine-tuning the model by slightly varying the `max_depth` parameter away from 6 and evaluating the Multinomial Logistic Regression classifier more closely.  
+We started to build a pipeline to further explore this improvement but did not have enough time to complete it.
+* Evaluating earthquake specific models such as PSHA (Probabilistic Seismic Hazard Assessment) and DSHA (Deterministic Seismic Hazard Analysis).
 
 ## Authors
-Pedro Zurita
 Christoph Guenther
 Ashwini Kumar
+
+## Footnotes
+[^1]: Nolan, Joe (May 6, 2022). *The Effects of Soil Type on Earthquake Damage*, WSRB website, https://www1.wsrb.com/blog/the-effects-of-soil-type-on-earthquake-damage, accessed on 6/10/2024.
+[^2]: Earthquake Hazards Program. *The Modified Mercalli Intensity Scale*, USGS website, https://www.usgs.gov/programs/earthquake-hazards/modified-mercalli-intensity-scale, accessed on 6/10/2024.
+
+
 
 ************************************************************************
 # PROJECT PLAN
@@ -207,7 +222,3 @@ Ashwini Kumar
 - Deliver the final presentation.
 - Push final changes to GitHub.
 - Gather feedback and discuss potential future developments.
-
-## Footnotes
-[^1]: Nolan, Joe (May 6, 2022). *The Effects of Soil Type on Earthquake Damage*, WSRB website, https://www1.wsrb.com/blog/the-effects-of-soil-type-on-earthquake-damage, accessed on 6/10/2024.
-[^2]: Earthquake Hazards Program. *The Modified Mercalli Intensity Scale*, USGS website, https://www.usgs.gov/programs/earthquake-hazards/modified-mercalli-intensity-scale, accessed on 6/10/2024.

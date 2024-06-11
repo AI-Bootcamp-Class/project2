@@ -23,6 +23,9 @@
 		{
 			"name": "CG_14-ML-Optimization",
 			"path": "../../CG_14-ML-Optimization"
+		},
+		{
+			"path": "../../Project2_backup"
 		}
 	]
 }
