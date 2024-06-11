@@ -2,13 +2,15 @@
 
 ## Overview
 
-This project aims to predict the impact of earthquakes using historical seismic data and soil bulk density information. Using various features such as magnitude, depth, location, various geological features, and soil bulk density, we employ machine learning models to forecast potential earthquake impacts. The project integrates data retrieval, preprocessing, and model evaluation to deliver predictive capabilities and insights into seismic hazards.
+This project aims to predict the impact of earthquakes using historical seismic data and soil bulk density information. Using various properties of earthquakes, such as magnitude, depth, location, and various geological features, in addition to soil bulk density, we evaluate various machine learning (ML) classifiers to determine which one is best suited to model the potential impact of an earthquake.  
+We include soil bulk density in our analysis since the composition of the soil, besides the properties of an earthquake, has a large influence on the impact an earthquake has [^1].  
+This project integrates data retrieval, preprocessing, and model evaluation to deliver predictive capabilities and insights into seismic hazards.
 
 ## Process
 
-- **Data Retrieval**: Fetch earthquake data from a United States Geological Survey (USGS) rest API at https://earthquake.usgs.gov/fdsnws/event/1 and soil density data from a `.csv` file ("wosis_latest_bdwsod.csv") downloaded from https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/2f99e111-183c-11e9-aba8-a0481ca9e724.
+- **Data Retrieval**: Fetch earthquake data from a United States Geological Survey (USGS) rest API at https://earthquake.usgs.gov/fdsnws/event/1 and soil density data from a `.csv` file (`wosis_latest_bdwsod.csv`) downloaded from https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/2f99e111-183c-11e9-aba8-a0481ca9e724.
 - **Data Preprocessing**: Clean and prepare data for analysis, including handling missing values and feature engineering.  
-We use the Modified Mercalli Intensity (mmi) scale[^1] to determine the impact an earthquake might have.
+We use the Modified Mercalli Intensity (mmi) scale[^2] to determine the impact an earthquake might have.
 - **Exploratory Data Analysis (EDA)**: Exploration of the dataset to understand distributions, relationships, and patterns.
 - **Predictive Modeling**: Implement and evaluate various machine learning classifiers using the balanced accuracy score as metric to select the best one to build a model to predict earthquake impacts.
 
@@ -16,27 +18,25 @@ We use the Modified Mercalli Intensity (mmi) scale[^1] to determine the impact a
 ## Classifiers Evaluated
 
 - **Random Forest Calssifier (RFC)**: Captures complex interactions in the data and assesses feature importance, providing predictions by aggregating multiple decision trees.
-- **Multinomial Logistic Regression**: Performs multinomial classification to predict earthquake impact.
+- **Multinomial Logistic Regression**: Performs multinomial classification to separate data points into different classes.
 - **Support Vector Machine (SVM)**: Handles complex classification tasks and ensures robust separation in high-dimensional spaces.
 - **K Nearest Neighbors (KNN)**: Classifies data points based on the proximity of similar data points.
 - **Decision Tree (DT)**: Classifies data using series of binary decisions organized into a hierarchical tree structure.
 
-## Data Files 
+## Files
+### Data Files 
  * `wosis_latest_bdwsod.csv` - Soil bulk density data file.
  * `earthquake_data.csv` - Raw dataset. File combines earthquake data retrieved from USGS and soil bulk density data.
- * `earthquake_data_standardized.csv` - Standardized/Scaled and reduced dataset used for analysis. Contains only features we will use to build our models. Based on `earthquake_data.csv`
- * `earthquake_data_reduced.csv` - Obsolete
- 
+ * `earthquake_data_standardized.csv` - Standardized/Scaled and reduced dataset used for analysis. Contains only features we will use to build our models. Based on `earthquake_data.csv`. 
 
 ### Main Program Files
 This section lists the main program files used. Details are provided in another section below.
 * `retrieve_data.ipynb` - Retrieves earthquake and soil data and creates `earthquake_data.csv`.
 * `preprocess_data.ipynb` - Takes `earthquake_data.csv`, preprocesses the data and creates `earthquake_data_standardized.csv` as output.
-* `evaluate_classifiers.ipynb` - Takes `earthquake_data_standardized.csv` as input and splits data into train and test datasets. Evaluates the following classifiers: Random Forest, Decision Tree, KNN, Multinomial Logistic Regression and Support Vector Machine. Adresses overfitting (as necessary) and tunes hyperparameters for the three best performing models as measured by the balanced accuracy score for the test dataset.  
-Evaluates each classifier using five different `random_state` seeds to avoid overestimating the performance of a model as a result of a favorable selection of the `random_state` variable.
+* `evaluate_classifiers.ipynb` - Takes `earthquake_data_standardized.csv` as input and evaluates five different classifiers to determine which one is best suited to build our model.
 * `earthquake_model.ipynb` - Uses pipelines to build the model to predict earthquake intensity.
 
-### Exploratory Program Files
+### Exploratory Program and Data Files
 * `lr_model_predictions.ipynb` - Preliminary evaluation of Mutinomial Logistic Regression Classifier.
 * `lr_model_optimizations.ipynb`- Another preliminary evaluation of Mutinomial Logistic Regression Classifier.
 * `svm_model_predictions.ipynb` - Preliminary evaluation of Support Vector Machines Classifier.
@@ -45,6 +45,7 @@ Evaluates each classifier using five different `random_state` seeds to avoid ove
 * `rfc_reduced_model_optimizations.ipynb` - Preliminary evaluation of Random Forest Classifier using reduced feature set.
 * `knn_model_optimization.ipynb` - Preliminary evaluation of K-Nearest_neighbors Classifier.
 * `PSHA_DSHA_model_predictions.ipynb` - Preliminary evaluation of Probabilistic Seismic Hazard Analysis (PSHA) and Deterministic Seismic Hazard Analysis (DSHA) models.
+* `earthquake_data_reduced.csv` - A data file that contains the feature and target columns used to evaluate classifiers and build our model but before those features are scaled. This data file is no longer needed.
 
 ### Utility Program Files
 * `optimization_utilities.py` - Used in `evaluate_classifiers.ipynb`. Utility functions for evaluating classifiers.
@@ -54,8 +55,8 @@ Evaluates each classifier using five different `random_state` seeds to avoid ove
 * README.md - Project overview and setup instructions
 * EDA.md 
 
-#### Details of Data Collection and Preprocessing
-##### Retrieve Earthquake and Soil Data:
+## Details of Data Collection and Preprocessing
+### Retrieve Earthquake and Soil Data:
 1. Retrieve Earthquake data using these filters 
    * Start date: 1/1/1995, end date: 12/31/2023.
    * Location: Contiguous United States as defined by minimum and maximum longitudes and latitudes.
@@ -64,7 +65,7 @@ Evaluates each classifier using five different `random_state` seeds to avoid ove
 3. Calculate an average soil bulk density from the different soil layers given in the original data.
 4. Combine earthquake and soil bulk density data by finding the soil bulk density record with the nearest longitude and latitude to the longitude and latitude of a given earthquake record. 
 5. Save combined earthquake and soil bulk density data in the data file `earthquake_data.csv`.
-##### Data Pre-Processing
+### Data Pre-Processing
 1. Retrieve and read earthquake data from `earthquake_data.csv`.
 2. Check data types.
 3. Drop rows with `NaN` values.
@@ -88,7 +89,7 @@ Evaluates each classifier using five different `random_state` seeds to avoid ove
 13. Run preliminary Random Forest Classifier model on scaled, reduced, and cleaned data to assess feasability of building a mopdel with the given data and determine which features might be dominant.  
 **Result**: Balanced test accuracy score looks promising. However, model is overfitting. No set of features is dominant.
 
-#### Details of Model Evaluation and Tuning
+## Details of Model Evaluation and Tuning
 We use the balanced accuracy score of the test data set as the metric to evaluate the performance of the different models.
 During our initial exploration of the performance of different models, we noticed that the performance was quite sensitive to the values of the `random_state` seed variable. Since the selection of the best performing model should not depend on the randomly chosen `random_state` variable, we performed model evaluations and tuning with five different values (of 3, 7, 13, 29, 42) for the `random_state` variable. We then used the average of the balanced accuracy scores over the different values of the `random_state` variable to evaluate the performance of each model.  
 We used the following classifiers to build models using the full feature set:
@@ -111,26 +112,26 @@ Next, we addressed the overfitting of the Random Forest Classifier model. A stan
 * P-values and
 * PCA.
 Again, we performed our analysis with the five different `random_state` seed values mentioned above.
-##### Result of P-Value Analysis
+### Result of P-Value Analysis
 1. Depending on the seed value the size of the p-values and their order varied.
 2. We had to consistently remove 29 out of 30 features for the balanced accuracy score for the test data to drop below 1.0.  
 Therefore we concluded that using the p-values approach to reduce the overfitting of the Random Forest Classifier model was unsuccessful.
-##### Result of PCA
+### Result of PCA
 We varied the number of components for our PCA from 2 to the number of features minus 1 and did not find that the balanced accuracy for the train data dropped below 1.0.  
 Therefore we concluded that using PCA to reduce the overfitting of the Random Forest Classifier model was unsuccessful as well.
 
 Next, we turned to hyperparameter tuning. We performed hyperparameter tuning on all three of our best models.
-##### Result of Hyperparameter Tuning for Random Forest Classifier Model
+### Result of Hyperparameter Tuning for Random Forest Classifier Model
 
-##### Result of Hyperparameter Tuning for Multinomial Logistic Regression Model
+### Result of Hyperparameter Tuning for Multinomial Logistic Regression Model
 
-##### Result of Hyperparameter Tuning for Support Vector Machine Model
+### Result of Hyperparameter Tuning for Support Vector Machine Model
 
 
-#### Conclusions
+## Conclusions
 Present the results of the model and any conclusions drawn from the analysis.
 
-#### Future Work
+## Future Work
 Discuss any additional questions that surfaced and outline plans for future development.
 ### Future Considerations
 
@@ -138,7 +139,7 @@ Discuss any additional questions that surfaced and outline plans for future deve
 - **Seismic Hazard Analysis**: We aim to integrate both Probabilistic Seismic Hazard Analysis (PSHA) and Deterministic Seismic Hazard Analysis (DSHA) to evaluate potential earthquake impacts comprehensively.
 
 
-#### Authors
+## Authors
 Pedro Zurita
 Christoph Guenther
 Ashwini Kumar
@@ -168,5 +169,6 @@ Ashwini Kumar
 - Gather feedback and discuss potential future developments.
 
 ## Footnotes
-[^1]: Earthquake Hazards Program. *The Modified Mercalli Intensity Scale*, USGS website, https://www.usgs.gov/programs/earthquake-hazards/modified-mercalli-intensity-scale, accessed on 6/10/2024.
+[^1]: Nolan, Joe (May 6, 2022). *The Effects of Soil Type on Earthquake Damage*, WSRB website, https://www1.wsrb.com/blog/the-effects-of-soil-type-on-earthquake-damage, accessed on 6/10/2024.
+[^2]: Earthquake Hazards Program. *The Modified Mercalli Intensity Scale*, USGS website, https://www.usgs.gov/programs/earthquake-hazards/modified-mercalli-intensity-scale, accessed on 6/10/2024.
 
