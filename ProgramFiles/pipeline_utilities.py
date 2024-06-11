@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from optimization_utilities import calc_accuracy
+from optimization_utilities import calc_accuracy, calc_classification_report
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -61,6 +61,47 @@ def preprocess_data(df_earthquake):
 
     return(train_test_split(X, y))
 
+def build_earthquake_model(df_earthquake):
+    """
+    Builds a model to predict the intensity of an earthquake using the 
+    Modified Mercalli Intensity (MMI) Scale using the following steps:
+    1. Preprocess the data,
+    2. Split the data into train and test data sets,
+    3. Scale the data using Standard Scaler,
+    4. Fit a Random Forest Classifier model using optimized hyperparameters, and
+    5. Calculate and print balanced accuracy scores.
+
+    Returns the trained model.
+    """
+    # Preprocess data
+    X_train, X_test, y_train, y_test = preprocess_data(df_earthquake)
+
+    # Define a list of steps for the pipeline
+    steps = [("Scale", StandardScaler()),
+             ("Classifier", RandomForestClassifier(max_depth=6))]
+    
+    # Instantiate a pipeline
+    pipeline = Pipeline(steps)
+
+    # Fit the model
+    pipeline.fit(X_train, y_train)
+
+    # Calculate balanced accuracy scores and classification report
+    train_accuracy = calc_accuracy(X_train, y_train, pipeline)
+    test_accuracy = calc_accuracy(X_test, y_test, pipeline)
+    class_report = calc_classification_report(X_test, y_test, pipeline)
+
+    # Print balanced accuracy scores of best classifier
+    classifier = pipeline[1]
+    print(f"Best Classifier: {classifier}:")
+    print(f"Balanced Train Accuracy Score: {train_accuracy:.3f}.")
+    print(f"Balanced Test Accuracy Score: {test_accuracy:.3f}.")
+    print("-"*60)
+    print("Classification Report:")
+    print(class_report)
+
+    return(pipeline)
+
 def get_better_classifier(pipelines, df):
     """
     Accepts two pipelines and earthquake data.
@@ -106,7 +147,7 @@ def get_better_classifier(pipelines, df):
     best_accuracy = accuracies[best_index]
     return(best_pipeline, best_accuracy)
 
-def build_earthquake_model(df_earthquake):
+def fine_tune_models(df_earthquake):
     """
     Builds a model to predict the intensity of an earthquake using the 
     Modified Mercalli Intensity (MMI) Scale using the following steps:
