@@ -161,10 +161,11 @@ As we found for the previous two classifiers above, we observed that the best fi
 
 ## Challenges
 We encountered the following challenges:
-* We were unable to increase the balanced accuracy score for the test data beyond 0.6-0.65, failing to reach the given target of -.75 or above.
+* We were unable to increase the balanced accuracy score for the test data beyond 0.6-0.65, failing to reach the given target of 0.75 or above.
 * The lack of geological and soil science domain knowledge made it challenging to interpret the geological features of an earthquake. This handicapped our selection of the relevant features.
-* It was very challenging to finding soil composition data.
-* We were unable to peoperly link soil composition data with the location at which impact was measured. The location at which the `mmi` metric was determined was not available to us. We therefore had to use the soil data for a location that was closest to the earthquake location which might or might not be the same location at which the `mmi` was taken.
+* Finding soil composition data.
+* Location of `mmi` measurements were not available. We therefore used the soil data for a location that was closest to the earthquake location which might or might not be the same location at which the `mmi` was taken.
+* Persistent overfitting of the Random Forest Classifier. Unfortunately, it was the classifier with the best balanced accuracy score.
 * We found a dependency of the classifier performance on the `random_state` seed variable. We mitigated this challenge by evaluating the classifiers for different `random_state` values and averaging over the results.
 
 ## Conclusions
