@@ -66,7 +66,6 @@ We also created a preliminary data file. It is contained in the `Resources/Explo
 
 ### Documentation
 * README.md - Project overview and detailed account of the data retrieval, preprocessing, exploratory data analysis, classifier evaluations, and model building steps. Also lists all files created.
-* EDA.md 
 
 ## Details of Data Collection, EDA, and Preprocessing
 ### Retrieve Earthquake and Soil Data:
