@@ -57,7 +57,7 @@ def calc_accuracy(X, y, model):
 
     return(balanced_accuracy_score(y, predict))
 
-def calc_classification_report(X,y, model):
+def calc_classification_report(X, y, model):
     """
     Calculate classification report for input data X, input target y, and
     input model.
